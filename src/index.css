@@ -1,0 +1,71 @@
+@import "tailwindcss";
+
+@theme {
+  --font-display: "Fraunces", "Georgia", serif;
+  --font-body: "Inter", system-ui, sans-serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, monospace;
+
+  --color-ink: #0c1b2e;
+  --color-ink-2: #122744;
+  --color-parchment: #f6f3ec;
+  --color-parchment-2: #efeadd;
+  --color-brass: #a6803d;
+  --color-brass-light: #c9a968;
+  --color-slate: #2e3b4e;
+  --color-slate-light: #5b6b82;
+  --color-hairline: #24405f;
+  --color-hairline-light: #d9d2c4;
+
+  --animate-fade-up: fade-up 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  --animate-fade-in: fade-in 1s ease forwards;
+
+  @keyframes fade-up {
+    from { opacity: 0; transform: translateY(24px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  @keyframes fade-in {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+  body {
+    background-color: var(--color-parchment);
+    color: var(--color-ink);
+    font-family: var(--font-body);
+    -webkit-font-smoothing: antialiased;
+  }
+  ::selection {
+    background-color: var(--color-brass);
+    color: var(--color-parchment);
+  }
+}
+
+@layer utilities {
+  .citation {
+    font-family: var(--font-mono);
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    font-size: 0.6875rem;
+  }
+
+  .reveal {
+    opacity: 0;
+  }
+  .reveal.is-visible {
+    animation: fade-up 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
