@@ -4,6 +4,7 @@ import { Menu, X, ChevronDown, ArrowRight } from "lucide-react";
 import { practiceAreas } from "../../data/practiceAreas";
 
 const NAV_LINKS = [
+  { label: "Home", to: "/" },
   { label: "About", to: "/about" },
   { label: "Practice Areas", to: "/practice-areas", mega: true },
   { label: "Our Team", to: "/team" },
@@ -26,14 +27,24 @@ export default function Navbar() {
   return (
     <header
       className={`fixed top-0 left-0 right-0 z-50 transition-colors duration-300 ${
-        scrolled ? "bg-ink/90 backdrop-blur-md border-b border-hairline" : "bg-transparent"
+        scrolled
+          ? "bg-ink/90 backdrop-blur-md border-b border-hairline"
+          : "bg-transparent"
       }`}
     >
       <div className="mx-auto max-w-7xl px-6 lg:px-10">
         <div className="flex h-20 items-center justify-between">
-          <Link to="/" className="flex flex-col leading-none" onClick={() => setMobileOpen(false)}>
-            <span className="font-display text-xl tracking-tight text-parchment">Omotola & Partners</span>
-            <span className="citation text-brass-light mt-1">Attorneys &amp; Solicitors</span>
+          <Link
+            to="/"
+            className="flex flex-col leading-none"
+            onClick={() => setMobileOpen(false)}
+          >
+            <span className="font-display text-xl tracking-tight text-parchment">
+              Omotola & Partners
+            </span>
+            <span className="citation text-brass-light mt-1">
+              Attorneys &amp; Solicitors
+            </span>
           </Link>
 
           <nav className="hidden lg:flex items-center gap-8">
@@ -50,7 +61,12 @@ export default function Navbar() {
                     aria-expanded={megaOpen}
                   >
                     {link.label}
-                    <ChevronDown size={14} className={`transition-transform ${megaOpen ? "rotate-180" : ""}`} />
+                    <ChevronDown
+                      size={14}
+                      className={`transition-transform ${
+                        megaOpen ? "rotate-180" : ""
+                      }`}
+                    />
                   </button>
 
                   {megaOpen && (
@@ -65,7 +81,9 @@ export default function Navbar() {
                             <span className="text-sm text-parchment/85 group-hover:text-brass-light transition-colors">
                               {area.name}
                             </span>
-                            <span className="citation text-slate-light shrink-0">{area.ref}</span>
+                            <span className="citation text-slate-light shrink-0">
+                              {area.ref}
+                            </span>
                           </Link>
                         ))}
                         <Link
@@ -82,9 +100,12 @@ export default function Navbar() {
                 <NavLink
                   key={link.to}
                   to={link.to}
+                  end={link.to === "/"}
                   className={({ isActive }) =>
                     `text-sm transition-colors py-2 ${
-                      isActive ? "text-brass-light" : "text-parchment/85 hover:text-brass-light"
+                      isActive
+                        ? "text-brass-light"
+                        : "text-parchment/85 hover:text-brass-light"
                     }`
                   }
                 >
