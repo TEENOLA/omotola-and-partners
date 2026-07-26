@@ -12,6 +12,7 @@ import Contact from "./pages/Contact";
 import About from "./pages/About";
 import Insights from "./pages/Insights";
 import InsightDetail from "./pages/InsightDetail";
+import Careers from "./pages/Careers";
 export default function App() {
   return (
     <BrowserRouter>
@@ -24,7 +25,7 @@ export default function App() {
           <Route path="/team" element={<Team />} />
           <Route path="/insights" element={<Insights />} />
           <Route path="/insights/:slug" element={<InsightDetail />} />
-          <Route path="/careers" element={<ComingSoon title="Careers" />} />
+          <Route path="/careers" element={<Careers />} />
           <Route path="/contact" element={<Contact />} />
           <Route
             path="/privacy"
